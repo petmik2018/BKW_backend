@@ -4,6 +4,10 @@ class Chapter(models.Model):
     name = models.CharField(max_length=64, unique=True)
     description = models.TextField(verbose_name='Титульная информация')
 
+    def __str__(self):
+        return self.name
+
+
 
 class Brand(models.Model):
     name = models.CharField(max_length=64, unique=True)
@@ -18,9 +22,15 @@ class Brand(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=64, unique=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Department(models.Model):
     name = models.CharField(max_length=64, unique=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -35,7 +45,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     department = models.ForeignKey(Department, on_delete=models.PROTECT)
     chapter = models.ForeignKey(Chapter, on_delete=models.PROTECT)
-    image = models.ImageField(upload_to='products', null=True, blank=True)
+    image_link = models.CharField(max_length=255, null=True)
     description = models.TextField(verbose_name='Краткое описание')
 
     def __str__(self):
