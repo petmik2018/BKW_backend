@@ -45,8 +45,8 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     department = models.ForeignKey(Department, on_delete=models.PROTECT)
     chapter = models.ForeignKey(Chapter, on_delete=models.PROTECT)
-    image_link = models.CharField(max_length=255, null=True)
-    description = models.TextField(verbose_name='Краткое описание')
+    image_links = models.CharField(max_length=255, null=True)
+    description = models.TextField(verbose_name='Описание')
 
     def __str__(self):
         info = self.name + ' ' + self.style + ', Цвет ' + self.color + ' ' + self.color_name

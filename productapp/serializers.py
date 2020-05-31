@@ -8,4 +8,4 @@ class ProductProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Product
-        fields = ('id', 'style', 'name', 'color', 'color_name', 'brand', 'category', 'department', 'chapter', 'image_link', 'description')
+        fields = ('id', 'style', 'name', 'color', 'color_name', 'brand', 'category', 'department', 'chapter', 'image_links', 'description')
