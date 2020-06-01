@@ -6,6 +6,7 @@ from productapp import views
 
 router = DefaultRouter()
 router.register('profile', views.ProductProfileViewSet)
+router.register('brand', views.BrandViewSet)
 
 
 urlpatterns = [

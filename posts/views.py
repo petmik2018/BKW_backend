@@ -44,12 +44,8 @@ def load_file_view(request, pk):
 
             image_links_draft = my_list[8]
             image_links = image_links_draft.replace('"', '').replace(' ', '').replace(",", ' ').split(' ')
-
-            # for item in image_links:
-            #
-            #     item.strip()
-            print(image_links)
             image_links_str = json.dumps(image_links)
+
             description['key_points'] = [my_list[9]]
             description['key_points'].append(my_list[10])
             description['key_points'].append(my_list[11])
