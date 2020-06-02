@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'profiles_api',
     'seller_api',
     'productapp',
+    'stockapp',
     'posts'
 ]
 
