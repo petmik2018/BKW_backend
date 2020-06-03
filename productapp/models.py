@@ -52,3 +52,10 @@ class Product(models.Model):
         info = self.name + ' ' + self.style + ', Цвет ' + self.color + ' ' + self.color_name
         return info
 
+    def get_stock(self):
+        stock_info = self.product_stock.all()
+        stock_arr = []
+        for item in stock_info:
+            stock_arr.append({"size": item.size, "quantity": item.quantity, "price": item.price})
+        return stock_arr
+

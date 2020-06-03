@@ -4,5 +4,5 @@ from stockapp import views
 
 
 urlpatterns = [
-    path('<int:pk>/', views.StockView.as_view())
+    path('<int:product_pk>/', views.StockView.as_view())
 ]
