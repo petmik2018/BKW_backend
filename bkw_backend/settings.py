@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'seller_api',
     'productapp',
     'stockapp',
+    'basketapp',
     'posts'
 ]
 

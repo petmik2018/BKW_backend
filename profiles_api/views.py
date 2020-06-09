@@ -9,6 +9,8 @@ from rest_framework.settings import api_settings
 # from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.permissions import IsAuthenticated
 
+from rest_framework.authtoken.models import Token
+
 from profiles_api import serializers
 from profiles_api import models
 from profiles_api import permissions
@@ -113,6 +115,19 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 class UserLoginApiView(ObtainAuthToken):
     """Handle creating user authentication tockens"""
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
+
+    """ Переопределение  метода для получения id пользователя"""
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data,
+                                           context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
+            'user_id': user.pk,
+            'user_name': user.name
+        })
 
 class UserProfileFeedViewSet(viewsets.ModelViewSet):
     """Handles creating, reading and updating profile feed items"""
