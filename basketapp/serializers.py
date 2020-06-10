@@ -7,5 +7,5 @@ class BasketSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Basket
-        fields = ('product', 'size', 'quantity', 'price')
+        fields = ('product', 'name', 'size', 'quantity', 'price')
 

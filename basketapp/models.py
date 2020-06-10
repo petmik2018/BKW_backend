@@ -6,6 +6,7 @@ from productapp.models import Product
 class Basket(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_basket')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    name = models.CharField(max_length=64, default='')
     size = models.CharField(max_length=16)
     quantity = models.PositiveIntegerField(verbose_name='количество', default=0)
     price = models.PositiveIntegerField(verbose_name='цена', default=0)
