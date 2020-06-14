@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.shortcuts import get_object_or_404
 from productapp.models import Product
 
 
@@ -15,5 +16,16 @@ class Basket(models.Model):
     def __str__(self):
         info = self.user.name + ' ' + self.product.name + ' ' + self.size + ' ' + str(self.quantity)
         return info
+
+    def get_image(self):
+        # image_links = self.product.product_images.all()
+        # images_arr = []
+        # for item in image_links:
+        #     images_arr.append({"link": item.name, "is_main": item.IsMain})
+        # return images_arr
+
+        image_link = get_object_or_404(self.product.product_images, IsMain=True)
+        return image_link.name
+
 
 
