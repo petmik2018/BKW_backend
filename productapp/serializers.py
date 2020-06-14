@@ -12,7 +12,7 @@ class ProductProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Product
-        fields = ('id', 'style', 'name', 'color', 'color_name', 'brand_name', 'category_name', 'department_name', 'chapter', 'image_links', 'description', 'get_stock')
+        fields = ('id', 'style', 'name', 'color', 'color_name', 'brand_name', 'category_name', 'department_name', 'chapter', 'image_links', 'description', 'get_stock', 'get_images')
 
 
 class BrandSerializer(serializers.ModelSerializer):

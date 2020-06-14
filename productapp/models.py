@@ -59,3 +59,23 @@ class Product(models.Model):
             stock_arr.append({"size": item.size, "quantity": item.quantity, "price": item.price})
         return stock_arr
 
+    def get_images(self):
+        image_links = self.product_images.all()
+        images_arr = []
+        for item in image_links:
+            images_arr.append({"link": item.name, "is_main": item.IsMain})
+        return images_arr
+
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_images')
+    name = models.CharField(max_length=64)
+    IsMain = models.BooleanField(default=False)
+
+    def __str__(self):
+        if self.IsMain:
+            return self.name + ' +'
+        else:
+            return self.name
+
+
